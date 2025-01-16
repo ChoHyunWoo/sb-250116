@@ -1,6 +1,6 @@
 package com.example.demo.domain.home.controller;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -85,14 +85,21 @@ public int ageUp(){
     @GetMapping("/article")
     @ResponseBody
     public Article getArticle() {
-        return new Article(1,"제목","내용");
+      return Article.builder()
+        .title("제목")
+                .body("내용")
+              .isDeleted(false)
+        .build();
     }
 }
 
 @Getter
-@AllArgsConstructor
+@Builder
 class Article{
-   private int id =1 ;
-   private  String title;
-   private  String body;
+
+    @Builder.Default
+   private   int id = 1;
+   private   String title;
+   private   String body;
+   private boolean isDeleted;
 }
