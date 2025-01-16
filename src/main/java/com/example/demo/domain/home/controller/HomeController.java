@@ -8,9 +8,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
 
     @GetMapping("/")
-    @ResponseBody
+    @ResponseBody // 메서드의 리턴 값을 브라우저에 보여준다.
     public String home() {
     return "hello";
 }
+@GetMapping("/introduce")
+@ResponseBody
+public String introduce(){
+        return "안녕하세요. 저는 홍길동입니다.";
+}
+
 
 }
